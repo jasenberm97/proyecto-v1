@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomLoginController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('login-register');
 });
 
 Route::post('/login', function () {
     $credentials = request()->only('correo', 'contraseña');
-});
+});*/
+
+Route::get('/login', [CustomLoginController::class, 'login']);
+Route::get('/login-post', [CustomLoginController::class, 'loginPost']);
+Route::get('/registro', [CustomLoginController::class, 'registro']);
+Route::get('/recuperar-contraseña', [CustomLoginController::class, 'recuperar_contraseña']);
+Route::get('/dashboard', [AdminController::class, 'dashboard']);
+Route::get('/crear-usuarios', [AdminController::class, 'crear_usuarios']);
+Route::get('/crear-rol', [AdminController::class, 'crear_rol']);
+Route::get('/listar-usuarios', [AdminController::class, 'listar_usuarios']);
+Route::get('/listar-rol', [AdminController::class, 'listar_rol']);

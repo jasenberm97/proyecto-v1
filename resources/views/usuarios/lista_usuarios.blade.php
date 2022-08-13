@@ -55,7 +55,7 @@
                       <td>jasencio@gmail.com</td>
                       <td>1234</td>
                       <td>Administrador</td>
-                      <td><span class="badge bg-info">Editar</span>  <span class="badge bg-danger">Eliminar</span></td>
+                      <td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td>
                     </tr>
                     <tr>
                       <td>1.</td>
@@ -66,7 +66,7 @@
                       <td>jasencio@gmail.com</td>
                       <td>1234</td>
                       <td>Tutor</td>
-                      <td><span class="badge bg-info">Editar</span>  <span class="badge bg-danger">Eliminar</span></td>
+                      <td><td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td></td>
                     </tr>
                     <tr>
                       <td>1.</td>
@@ -77,7 +77,7 @@
                       <td>jasencio@gmail.com</td>
                       <td>1234</td>
                       <td>Estudiante</td>
-                      <td><span class="badge bg-info">Editar</span>  <span class="badge bg-danger">Eliminar</span></td>
+                      <td><td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td></td>
                     </tr>
                   </tbody>
                 </table>

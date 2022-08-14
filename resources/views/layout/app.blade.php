@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="<?php echo url('theme'); ?>/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo url('theme'); ?>/plugins/summernote/summernote-bs4.min.css">
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -50,7 +52,19 @@
     </ul>
 
     <!-- Right navbar links -->
+    <div class="mt-3 space-y-1">
+      <!-- Authentication -->
+      <form method="POST" action="{{ route('logout') }}">
+          @csrf
 
+          <x-responsive-nav-link :href="route('logout')"
+                  onclick="event.preventDefault();
+                              this.closest('form').submit();">
+              {{ __('Log Out') }}
+          </x-responsive-nav-link>
+      </form>
+  </div>
+    
   </nav>
   <!-- /.navbar -->
 

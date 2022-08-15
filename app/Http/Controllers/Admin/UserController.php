@@ -1,37 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
-class RegisteredUserController extends Controller
+use App\Models\User;
+use App\Models\Rol;
+
+class UserController extends Controller
 {
-    /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        //return view('auth.register');
-        return view('login.registro');
+    public function create(){
+        $rols = Rol::all();
+    
+        return view('usuarios.crear_usuarios', compact('rols'));
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -41,6 +25,7 @@ class RegisteredUserController extends Controller
             'identification' => ['required', 'string', 'min:10', 'max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'min:8', 'max:10', 'unique:users'],
+            'rol' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -51,14 +36,17 @@ class RegisteredUserController extends Controller
             'identification' => $request->identification,
             'email' => $request->email,
             'username' => $request->username,
-            'role_id' => 3,
+            'role_id' => $request->rol,
             'password' => Hash::make($request->password),
         ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
         
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('dashboard');
+    }
+
+    public function list() 
+    {
+        $users = User::where('role_id', '<>' , 1)->get();
+        
+        return view('usuarios.lista_usuarios', compact('users'));
     }
 }

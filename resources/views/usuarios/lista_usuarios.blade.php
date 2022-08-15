@@ -46,39 +46,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Jose</td>
-                      <td>Asencio</td>
-                      <td>120000000</td>
-                      <td>jAsencio</td>
-                      <td>jasencio@gmail.com</td>
-                      <td>1234</td>
-                      <td>Administrador</td>
-                      <td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Jose</td>
-                      <td>Asencio</td>
-                      <td>120000000</td>
-                      <td>jAsencio</td>
-                      <td>jasencio@gmail.com</td>
-                      <td>1234</td>
-                      <td>Tutor</td>
-                      <td><td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td></td>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Jose</td>
-                      <td>Asencio</td>
-                      <td>120000000</td>
-                      <td>jAsencio</td>
-                      <td>jasencio@gmail.com</td>
-                      <td>1234</td>
-                      <td>Estudiante</td>
-                      <td><td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td></td>
-                    </tr>
+                    @foreach ($users as $key => $user)
+                        <tr>
+                          <td>{{ $key + 1 }}</td>
+                          <td>{{ $user->name }}</td>
+                          <td>{{ $user->last_name }}</td>
+                          <td>{{ $user->identification }}</td>
+                          <td>{{ $user->username }}</td>
+                          <td>{{ $user->email }}</td>
+                          <td>{{ $user->role_id }}</td>
+                          <td>{{ $user->role_id }}</td>
+                          <td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td>
+                        </tr>
+                    @endforeach
+
                   </tbody>
                 </table>
               </div>

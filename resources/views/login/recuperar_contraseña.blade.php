@@ -7,7 +7,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Recuperar contraseña.</p>
 
-      <form action="/login" method="get">
+      <form action="{{ route('') }}" method="POST">
       <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Usuario">
           <div class="input-group-append">

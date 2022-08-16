@@ -41,24 +41,16 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($collection as $item)
+                        
+                    @endforeach
                     <tr>
                       <td>1.</td>
                       <td>Aministrador</td>
                       <td>Crear Usuarios</td>
                       <td><td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td></td>
                     </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Tutor</td>
-                      <td>Asignar revisiones</td>
-                      <td><td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td></td>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Estudiante</td>
-                      <td>Tareas</td>
-                      <td><td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td></span></td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>

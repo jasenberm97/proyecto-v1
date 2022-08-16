@@ -11,4 +11,8 @@ class RolController extends Controller
     public function create(){    
         return view('roles.crear_rol');
     }
+
+    public function list(){
+        return view('roles.listar_rol');
+    }
 }

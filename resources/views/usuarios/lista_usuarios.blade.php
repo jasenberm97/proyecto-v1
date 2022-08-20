@@ -2,82 +2,47 @@
 @section('title', 'Lista de usuarios')
 @section('content')
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Lista Usuarios</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-              <li class="breadcrumb-item active">Lista Usuarios</li>
-            </ol>
-          </div>
+<section class="content">
+
+    <div class="recent--patientslu">
+        <div class="title">
+            <h2 class="section--title">LISTA DE USUARIOS</h2>
+            <a href="/crear-usuarios" class="add"><i class="ri-add-line"></i>Nuevo usuario</a>
+            <!-- <button class="add"><a href="/crear-usuario"><i class="ri-add-line"></i></a>Nuevo usuario</button> -->
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Lista Usuarios</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>
+        <div class="tableslu">
+            <table>
+                <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Nombres</th>
-                      <th>Apellidos</th>
-                      <th>Cedula</th>
-                      <th>Usuario</th>
-                      <th>Correo</th>
-                      <th>Contraseña</th>
-                      <th>Perfil</th>
-                      <th>Acciones</th>
+                        <th style="width: 10px">#</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Cedula</th>
+                        <th>Usuario</th>
+                        <th>Correo</th>
+                        <th>Contraseña</th>
+                        <th>Perfil</th>
+                        <th>Acciones</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($users as $key => $user)
-                        <tr>
-                          <td>{{ $key + 1 }}</td>
-                          <td>{{ $user->name }}</td>
-                          <td>{{ $user->last_name }}</td>
-                          <td>{{ $user->identification }}</td>
-                          <td>{{ $user->username }}</td>
-                          <td>{{ $user->email }}</td>
-                          <td>{{ $user->role_id }}</td>
-                          <td>{{ $user->role_id }}</td>
-                          <td><a><span class="badge bg-info">Editar</span></a> <a><span class="badge bg-danger">Eliminar</span></a></td>
-                        </tr>
+                </thead>
+                <tbody>
+                @foreach ($users as $key => $user)
+                    <tr>
+                        <td data-label="#">{{ $key + 1 }}</td>
+                        <td data-label="Nombres">{{ $user->name }}</td>
+                        <td data-label="Apellidos">{{ $user->last_name }}</td>
+                        <td data-label="Cedula">{{ $user->identification }}</td>
+                        <td data-label="Usuario">{{ $user->username }}</td>
+                        <td data-label="Correo">{{ $user->email }}</td>
+                        <td data-label="Contraseña">{{ $user->role_id }}</td>
+                        <td data-label="Perfil">{{ $user->role_id }}</td>
+                        <td><span><i class="ri-edit-line edit"></i><i class="ri-delete-bin-line delete"></i></span></td>
+                    </tr>
                     @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>       
-        </div> 
-      </div>
-      <!-- /.container-fluid -->
-    </section>
-</div>
+</section>
 @endsection

@@ -39,3 +39,33 @@ Route::get('/listar-usuarios', [UserController::class, 'list']);
 Route::get('/crear-rol', [RolController::class, 'create']);
 Route::post('/crear-rol', [RolController::class, 'store']);
 Route::get('/listar-rol', [RolController::class, 'list']);
+
+
+
+
+/******************PARA PRUEBA DE VISTAS ************************/
+
+Route::get('/crear-facultades', function () {
+    return view('facultades.facultades_crear');
+});
+
+Route::get('/listar-facultades', function () {
+    return view('facultades.facultades_lista');
+});
+
+
+Route::get('/crear-asignaturas', function () {
+    return view('asignaturas.asignaturas_crear');
+});
+
+Route::get('/listar-asignaturas', function () {
+    return view('asignaturas.asignaturas_lista');
+});
+
+Route::get('/crear-tutorias', function () {
+    return view('tutorias.tutorias_crear');
+});
+
+Route::get('/listar-tutorias', function () {
+    return view('tutorias.tutorias_lista');
+});

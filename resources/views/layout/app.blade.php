@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="{{ asset('css/crear_facultad.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> --}}
     <title>@yield('title')</title>
 </head>
 
@@ -62,90 +60,67 @@
                         <span class="sidebar--item">Dashboard</span>
                     </a>
                 </li> -->
-
-                @if (Auth::user()->rol_id === 1)
-                    <li>
-                        <a href="/listar-usuarios">
-                            <span class="icon icon-2"><i class="ri-user-line"></i></span>
-                            <span class="sidebar--item">Usuarios</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/listar-rol">
-                            <span class="icon icon-3"><i class="ri-file-shield-line"></i></span>
-                            <span class="sidebar--item" style="white-space: nowrap;">Roles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/listar-facultades">
-                            <span class="icon icon-4"><i class="ri-user-line"></i></span>
-                            <span class="sidebar--item">Facultades</span>
-                        </a>
-                    </li>    
-                    <li>
-                        <a href="/listar-asignaturas">
-                            <span class="icon icon-5"><i class="ri-input-method-line"></i></span>
-                            <span class="sidebar--item">Asignaturas</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/listar-tutorias">
-                            <span class="icon icon-6"><i class="ri-file-copy-2-line"></i></span>
-                            <span class="sidebar--item">Tutorias</span>
-                        </a>
-                    </li>
-                @endif
-                
-                @if (Auth::user()->rol_id === 2)
-                                        
-                    <li>
-                        <a href="#">
-                            <span class="icon icon-7"><i class="ri-calendar-todo-fill"></i></span>
-                            <span class="sidebar--item">Actividades</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon icon-8"><i class="ri-pencil-ruler-2-line"></i></span>
-                            <span class="sidebar--item">Pruebas</span>
-                        </a>
-                    </li>    
-                @endif
-                
-                @if (Auth::user()->rol_id === 3)
-                    <li>
-                        <a href="#">
-                            <span class="icon icon-2"><i class="ri-pie-chart-2-line"></i></span>
-                            <span class="sidebar--item">Reportes</span>
-                        </a>
-                    </li>                    
-                @endif
-                
+                <li>
+                    <a href="/listar-usuarios">
+                        <span class="icon icon-2"><i class="ri-user-line"></i></span>
+                        <span class="sidebar--item">Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/listar-rol">
+                        <span class="icon icon-3"><i class="ri-file-shield-line"></i></span>
+                        <span class="sidebar--item" style="white-space: nowrap;">Roles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/listar-facultades">
+                        <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                        <span class="sidebar--item">Facultades</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/listar-asignaturas">
+                        <span class="icon icon-5"><i class="ri-input-method-line"></i></span>
+                        <span class="sidebar--item">Asignaturas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/listar-tutorias">
+                        <span class="icon icon-6"><i class="ri-file-copy-2-line"></i></span>
+                        <span class="sidebar--item">Tutorias</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon-7"><i class="ri-calendar-todo-fill"></i></span>
+                        <span class="sidebar--item">Actividades</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon-8"><i class="ri-pencil-ruler-2-line"></i></span>
+                        <span class="sidebar--item">Pruebas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon-2"><i class="ri-pie-chart-2-line"></i></span>
+                        <span class="sidebar--item">Reportes</span>
+                    </a>
+                </li>
             </ul>
             <ul class="sidebar--bottom-items">
-                {{-- <li>
+                <li>
                     <a href="#">
                         <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
                         <span class="sidebar--item">Settings</span>
                     </a>
-                </li> --}}
+                </li>
                 <li>
-                    {{-- <a href="#">
+                    <a href="#">
                         <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
                         <span class="sidebar--item">Logout</span>
-                    </a> --}}
-           
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
-            
+                    </a>
                 </li>
             </ul>
         </div>

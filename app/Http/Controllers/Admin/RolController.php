@@ -13,6 +13,26 @@ class RolController extends Controller
     }
 
     public function list(){
-        return view('roles.listar_rol');
+        $rols = Rol::all();
+        return view('roles.listar_rol', compact('rols'));
+    }
+    
+    public function store(Request $request){
+        
+        $data = $request->validate([
+            'name' => ['required','unique:rols'],
+            'description' => ['required', 'string'],
+
+        ]);
+
+        Rol::create($data);
+
+        return redirect()->route('list_rols');
+    }
+
+    public function delete(Rol $rol)
+    {
+        $rol->delete();
+        return redirect()->route('list_rols');
     }
 }

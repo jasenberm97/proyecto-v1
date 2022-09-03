@@ -14,7 +14,17 @@ class Rol extends Model
         'description',
     ];
 
-    public function user(){
-        return $this->hasMany(User::class);
+    // public function user(){
+    //     return $this->hasMany(User::class);
+    // }
+
+    /**
+     * Get the user that owns the Rol
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'foreign_key', 'other_key');
     }
 }

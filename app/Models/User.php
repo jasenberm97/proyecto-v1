@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -25,7 +26,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
-        'role_id',
+        'rol_id',
     ];
 
     /**
@@ -47,7 +48,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function rols(){
-        return $this->belongsToMany(Rol::class);
+    public function rol(){
+        return $this->belongsTo(Rol::class);
+    }
+
+
+    public function isAdmin(){
+        if($this->rol->name == 'admin') return true;
+        return false;
+    }
+
+    public function isStudent(){
+        if($this->rol->name == 'student') return true;
+        return false;
+    }
+
+    public function isTeacher(){
+        if($this->rol->name == 'teacher') return true;
+        return false;
     }
 }

@@ -1,34 +1,37 @@
 @extends('layout.app')
-@section('title', 'Roles')
+@section('title', 'Crear Facultades')
 @section('content')
 
 <section class="content">
     <div class="recent--patientscf">
         <div class="title">
             <!-- <h2 class="section--title">CREAR USUARIOS</h2> -->
-            <a href="/listar-rol" class="adds"><i class="ri-arrow-left-fill"></i>Volver</a>
+            <a href="/listar-facultades" class="adds"><i class="ri-arrow-left-fill"></i>Volver</a>
             <!-- <button class="add"><i class="ri-add-line"></i>Volver</button> -->
         </div>
         <div class="tablescf">
             <div class="containerscf">
-            <div class="titles">Crear Roles</div>
+            <div class="titles">Crear Facultades</div>
 
-            <form method="POST" action="{{ route('create_rol') }}">
+            <form method="POST" action="{{ route('create_faculty') }}">
                 @csrf
                 <div class="user-details">
                     <div class="input-fields">
-                        <input type="text" placeholder="Nombre del rol" name="name" value="{{ old('name') }}" required >
-                        <i class="uil uil-keyhole-square icon"></i>
+                        <input type="text" placeholder="Facultad" name="name" value="{{ old('faculty') }}" required>
+                        <i class="uil uil-university icon"></i>
                     </div>
                     <div class="input-fields">
-                        <input type="text" placeholder="Descripcion del rol" name="description" value="{{ old('description') }}" required>
-                        <i class="uil uil-align-justify icon"></i>
-                    </div>                    
+                        <input type="text" placeholder="Carrera" name="race" value="{{ old('race') }}" required>
+                        <i class="uil uil-books icon"></i>
+                    </div>
+                    <div class="input-fields">
+                        <input type="text" placeholder="Asignatura" name="course" value="{{ old('course') }}" required>
+                        <i class="uil uil-book-open icon"></i>
+                    </div>
                 </div>
                 <div class="button">
                     <input type="submit" value="Guardar">
                 </div>
-
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach

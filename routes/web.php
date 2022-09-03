@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomLoginController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RolController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\RolController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () {    
     return view('login.login');
 })->middleware(['guest']);
 
@@ -25,17 +25,10 @@ Route::get('/', function () {
 });*/
 
 Route::get('/dashboard', function(){
-    return view('dashboard.dashboard');
+    $auth = Auth::user();
+    return view('dashboard.dashboard', compact('auth'));
 })->middleware(['auth'])->name('dashboard');
 
 
+require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';
-
-
-Route::get('/crear-usuarios', [UserController::class, 'create']);
-Route::post('/crear-usuarios', [UserController::class, 'store']);
-Route::get('/listar-usuarios', [UserController::class, 'list']);
-
-Route::get('/crear-rol', [RolController::class, 'create']);
-Route::post('/crear-rol', [RolController::class, 'store']);
-Route::get('/listar-rol', [RolController::class, 'list']);

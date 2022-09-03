@@ -2,100 +2,70 @@
 @section('title', 'Usuarios')
 @section('content')
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Crear Usuarios</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-              <li class="breadcrumb-item active">Crear Usuarios</li>
-            </ol>
-          </div>
+<section class="content">
+    <div class="recent--patientscu">
+        <div class="title">
+            <!-- <h2 class="section--title">CREAR USUARIOS</h2> -->
+            <a href="/listar-usuarios" class="adds"><i class="ri-arrow-left-fill"></i>Volver</a>
+            <!-- <button class="add"><i class="ri-add-line"></i>Volver</button> -->
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-
-            <!-- Horizontal Form -->
-            <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">Creación de perfil de usuario</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal">
-                <div class="card-body">
-                <!-- <div class="row">
-                  <div class="col-3">
-                    <input type="text" class="form-control" placeholder=".col-3">
-                  </div>
-                  <div class="col-4">
-                    <input type="text" class="form-control" placeholder=".col-4">
-                  </div>
-                  <div class="col-5">
-                    <input type="text" class="form-control" placeholder=".col-5">
-                  </div>
-                </div> -->
-                  <div class="form-group row">
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Nombres">
+        <div class="tablescu">
+            <div class="containerscu">
+            <div class="titles">Crear Usuario</div>
+            <div class="form">
+            <form method="POST" action="{{ route('create_user') }}">
+                @csrf
+                <div class="user-details">
+                    <div class="input-box">
+                        <input type="text" placeholder="Nombre" name="name" value="{{ old('name') }}" required>
+                        <i class="uil uil-user icon"></i>
                     </div>
-                    <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Apellido paterno">
+                    <div class="input-box">
+                        <input type="text" placeholder="Apellido paterno" name="last_name" value="{{ old('last_name') }}" required>
+                        <i class="uil uil-user icon"></i>
                     </div>
-                    <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Apellido materno">
+                    <div class="input-box">
+                        <input type="text" placeholder="Apellido materno" name="second_last_name" value="{{ old('second_last_name') }}" required >
+                        <i class="uil uil-user icon"></i>
                     </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-6">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Correo Institucional">
+                    <div class="input-box">
+                        <input type="text" placeholder="Numero de cédula" name="identification" value="{{ old('identification') }}" required>
+                        <i class="uil uil-card-atm icon"></i>
                     </div>
-                    <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Cédula">
+                    <div class="input-box">
+                        <input type="text" placeholder="Usuario" name="username" value="{{ old('username') }}" required>
+                        <i class="uil uil-user icon"></i>
                     </div>
-                    <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Usuario">
+                    <div class="input-box">
+                        <input type="email" placeholder="Correo institucional" name="email" value="{{ old('email') }}" required>
+                        <i class="uil uil-envelope icon"></i>
                     </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-6">
-                      <input type="password" class="form-control" id="inputEmail3" placeholder="Contraseña">
+                    <div class="input-box">
+                        <input type="password" class="password" placeholder="Contraseña" name="password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <!-- <i class="uil uil-eye-slash showHidePw"></i> -->
                     </div>
-                    <div class="col-sm-6">
-                      <input type="password" class="form-control" id="inputEmail3" placeholder="Confirmar contraseña">
+                    <div class="input-box">
+                        <input type="password" class="password" placeholder="Confirmar contraseña" name="password_confirmation" required>
+                        <i class="uil uil-lock icon"></i>
+                        <!-- <i class="uil uil-eye-slash showHidePw"></i> -->
                     </div>
-                  </div>
+                    <select name="rol" value="{{ old('rol') }}" class="select-css">
+                        @foreach ($rols as $rol)
+                            <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-info">Guardar</button>
-                  <button type="submit" class="btn btn-default float-right">Cancelar</button>
+                <div class="button">
+                    <input type="submit" value="Guardar">
                 </div>
-                <!-- /.card-footer -->
-              </form>
+
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </form>
             </div>
-            <!-- /.card -->
-
-          </div>
-          <!--/.col (left) -->
+            </div>
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  @endsection
+    </div>
+    @endsection

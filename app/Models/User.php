@@ -54,17 +54,17 @@ class User extends Authenticatable
 
 
     public function isAdmin(){
-        if($this->rol->name == 'admin') return true;
+        if($this->rol->id == '1') return true;
         return false;
     }
 
     public function isStudent(){
-        if($this->rol->name == 'student') return true;
+        if($this->rol->id == '3') return true;
         return false;
     }
 
     public function isTeacher(){
-        if($this->rol->name == 'teacher') return true;
+        if($this->rol->id == '2') return true;
         return false;
     }
 }

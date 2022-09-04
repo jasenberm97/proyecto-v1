@@ -24,6 +24,8 @@ class TutorshipSeeder extends Seeder
             'max_students' => 40,
             'course_id' => 1,
             'teacher_id' => 2,
+            'faculty_id' => 1,
+            'career_id' => 1,
         ]);
     }
 }

@@ -13,24 +13,25 @@
             <div class="containerscf">
             <div class="titles">Crear Asignaturas</div>
 
-            <form action="#">
+            <form action="{{ route('create_course') }}" method="POST">
+                @csrf
                 <div class="user-details">
-                    <select name="facultad" class="select-css" name="faculty" value="{{ old('faculty') }}" required>
+                    <select class="select-css" name="name_faculty" value="{{ old('name_faculty') }}" required>
                         @foreach ($faculties as $faculty)
-                            <option value="{{ $faculty->id }}">{{ $faculty->name }}</option>
+                            <option value="{{ $faculty->name }}">{{ $faculty->name }}</option>
                         @endforeach
                     </select>
-                    <select name="carrera" class="select-css" name="race" value="{{ old('race') }}" required>
+                    <select class="select-css" name="name_career" value="{{ old('name_race') }}" required>
                         @foreach ($careers as $career)
-                            <option value="{{ $career->id }}">{{ $career->name }}</option>
+                            <option value="{{ $career->name }}">{{ $career->name }}</option>
                         @endforeach
                     </select>
-                    <select name="asignatura" class="select-css" name="course" value="{{ old('course') }}" required>
+                    <select class="select-css" name="name_course" value="{{ old('name_course') }}" required>
                         @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                            <option value="{{ $course->name }}">{{ $course->name }}</option>
                         @endforeach
                     </select>
-                    <select name="semestre" class="select-css" name="semester" value="{{ old('semester') }}" required>
+                    <select class="select-css" name="semester" value="{{ old('semester') }}" required>
                         <option value="Primero">1</option>
                         <option value="Segundo">2</option>
                         <option value="Tercero">3</option>
@@ -46,6 +47,9 @@
                 <div class="button">
                     <input type="submit" value="Guardar">
                 </div>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
             </form>
             </div>
         </div>

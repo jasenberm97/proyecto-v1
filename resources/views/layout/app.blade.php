@@ -60,7 +60,7 @@
                         <span class="sidebar--item">Dashboard</span>
                     </a>
                 </li> -->
-                <li>
+                <!-- <li>
                     <a href="/listar-usuarios">
                         <span class="icon icon-2"><i class="ri-user-line"></i></span>
                         <span class="sidebar--item">Usuarios</span>
@@ -107,20 +107,87 @@
                         <span class="icon icon-2"><i class="ri-pie-chart-2-line"></i></span>
                         <span class="sidebar--item">Reportes</span>
                     </a>
-                </li>
+                </li> -->
+                @if (Auth::user()->rol_id === 1)
+                    <li>
+                        <a href="/listar-usuarios">
+                            <span class="icon icon-2"><i class="ri-user-line"></i></span>
+                            <span class="sidebar--item">Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/listar-rol">
+                            <span class="icon icon-3"><i class="ri-file-shield-line"></i></span>
+                            <span class="sidebar--item" style="white-space: nowrap;">Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/listar-facultades">
+                            <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                            <span class="sidebar--item">Facultades</span>
+                        </a>
+                    </li>    
+                    <li>
+                        <a href="/listar-asignaturas">
+                            <span class="icon icon-5"><i class="ri-input-method-line"></i></span>
+                            <span class="sidebar--item">Asignaturas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/listar-tutorias">
+                            <span class="icon icon-6"><i class="ri-file-copy-2-line"></i></span>
+                            <span class="sidebar--item">Tutorias</span>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->rol_id === 2)
+
+                    <li>
+                        <a href="#">
+                            <span class="icon icon-7"><i class="ri-calendar-todo-fill"></i></span>
+                            <span class="sidebar--item">Actividades</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon icon-8"><i class="ri-pencil-ruler-2-line"></i></span>
+                            <span class="sidebar--item">Pruebas</span>
+                        </a>
+                    </li>    
+                @endif
+
+                @if (Auth::user()->rol_id === 3)
+                    <li>
+                        <a href="#">
+                            <span class="icon icon-2"><i class="ri-pie-chart-2-line"></i></span>
+                            <span class="sidebar--item">Reportes</span>
+                        </a>
+                    </li>                    
+                @endif
             </ul>
             <ul class="sidebar--bottom-items">
-                <li>
+                <!-- <li>
                     <a href="#">
                         <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
                         <span class="sidebar--item">Settings</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
-                    <a href="#">
+                    <!-- <a href="#">
                         <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
                         <span class="sidebar--item">Logout</span>
-                    </a>
+                    </a> -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-responsive-nav-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -128,7 +195,9 @@
             @yield('content')
         </div>
     </section>
-    <script src="{{ asset('js/inicio2.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/dropdown.js') }}"></script>
 </body>
 
 </html>

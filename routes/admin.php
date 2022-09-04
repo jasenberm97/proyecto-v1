@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\RolController;
+use App\Http\Controllers\Admin\TutorshipController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,16 +30,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/crear-asignaturas', [CourseController::class, 'create'])->name('create_course');
     Route::post('/crear-asignaturas', [CourseController::class, 'store']);
     Route::put('/editar-asignaturas', [CourseController::class, 'update']);
-    Route::delete('/crear-asignaturas', [CourseController::class, 'delete'])->name('delete_course');
-
-
-    //-------------------    
+    Route::delete('/eliminar-asignaturas/{course}', [CourseController::class, 'delete'])->name('delete_course');
     
-    Route::get('/crear-tutorias', function () {
-        return view('tutorias.tutorias_crear');
-    });
+    Route::get('/listar-tutorias', [TutorshipController::class, 'list'])->name('list_tutorship');
+    Route::get('/crear-tutorias', [TutorshipController::class, 'create'])->name('create_tutorship');
+    Route::post('/crear-tutorias', [TutorshipController::class, 'store']);
+    Route::put('/editar-tutorias', [TutorshipController::class, 'update']);
+    Route::delete('/eliminar-tutorias/{tutorship}', [TutorshipController::class, 'delete'])->name('delete_tutorship');
     
-    Route::get('/listar-tutorias', function () {
-        return view('tutorias.tutorias_lista');
-    });
+    Route::get('/cursos/{id}', [TutorshipController::class, 'getCourses']);
+    Route::get('/carreras/{id}', [TutorshipController::class, 'getCareers']);
+
 });

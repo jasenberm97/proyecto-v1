@@ -13,38 +13,49 @@
             <div class="containerscu">
             <div class="titles">Crear Tutorias</div>
             <div class="form">
-            <form action="#">
+            <form action="{{ route('create_tutorship') }}" method="POST">
+                @csrf
                 <div class="user-details">
                     <div class="input-fields">
-                        <select name="facultad" class="select-css" name="faculty" value="{{ old('faculty') }}" required>
-                            <option value="value1">Facultad Ciencias matenaticas y fisicas</option>
+                        <select class="select-css" id="facultad" name="faculty_id" value="{{ old('faculty_id') }}" required>   
+                            <option>Seleccione la facultad...</option>                        
+                            @foreach ($faculties as $faculty)
+                                <option value="{{ $faculty->id }}">{{ $faculty->name }}</option>
+                            @endforeach
+                            {{-- <option value="value1">Facultad Ciencias matenaticas y fisicas</option>
                             <option value="value2">Facultad de Ciencias Económicas.</option>
-                            <option value="value3">Facultad de Ciencias Médicas</option>
+                            <option value="value3">Facultad de Ciencias Médicas</option> --}}
                         </select>
                     </div>
                     <div class="input-box">
-                        <select name="carrera" class="select-css" name="race" value="{{ old('race') }}" required>
-                            <option value="value1">Ingenieria civil</option>
+                        <select class="select-css" id="carrera" name="career_id" value="{{ old('career_id') }}" required>
+                            <option>Seleccione la carrera...</option>  
+                            {{-- <option value="value1">Ingenieria civil</option>
                             <option value="value2">Ingenieria en sistemas computacionales</option>
-                            <option value="value3">Odontologia</option>
+                            <option value="value3">Odontologia</option> --}}
                         </select>
                     </div>
                     <div class="input-box">
-                        <select name="asignatura" class="select-css" name="course" value="{{ old('course') }}" required>
-                            <option value="value1">Matematica</option>
+                        <select class="select-css" id="curso" name="course_id" value="{{ old('course_id') }}" required>
+                            <option>Seleccione la asignatura...</option>  
+                            {{-- <option value="value1">Matematica</option>
                             <option value="value2">Fisica</option>
-                            <option value="value3">Programacion orientada a objeto</option>
+                            <option value="value3">Programacion orientada a objeto</option> --}}
                         </select>
                     </div>
                     <div class="input-box">
-                        <select name="docente" class="select-css" name="teacher" value="{{ old('teacher') }}" required>
-                            <option value="value1">Ing Rafel Marin</option>
+                        <select class="select-css" name="teacher_id" value="{{ old('teacher') }}" required>
+                            <option>Seleccione el tutor...</option>  
+                            @foreach ($tutors as $tutor)
+                                <option value="{{ $tutor->id }}">{{ $tutor->name }} {{ $tutor->last_name }} {{ $tutor->second_last_name }}</option>
+                            @endforeach
+                            {{-- <option value="value1">Ing Rafel Marin</option>
                             <option value="value2">Ing Ronny Matute</option>
-                            <option value="value3">Ing Jhon Obando</option>
+                            <option value="value3">Ing Jhon Obando</option> --}}
                         </select>
                     </div>
                     <div class="input-box">
-                        <input type="number" placeholder="Numero maximo de estudiantes" name="numberStudent" value="{{ old('numberStudent') }}" required>
+                        <input type="number" placeholder="Numero maximo de estudiantes" name="max_students" value="{{ old('numberStudent') }}" required>
                         <i class="uil uil-list-ol-alt icon"></i>
                     </div>
                     <div class="input-fields">
@@ -60,11 +71,11 @@
                         <i class="uil uil-calendar-alt icon"></i>
                     </div>
                     <div class="input-box">
-                        <input type="time" placeholder="Hora inicio" name="timeinit" value="{{ old('timeinit') }}" required>
+                        <input type="time" placeholder="Hora inicio" name="start_time" value="{{ old('start_time') }}" required>
                         <i class="uil uil-clock icon"></i>
                     </div>
                     <div class="input-box">
-                        <input type="time" placeholder="Hora termino" name="timefinish" value="{{ old('timefinish') }}" required>
+                        <input type="time" placeholder="Hora termino" name="end_time" value="{{ old('end_time') }}" required>
                         <i class="uil uil-clock icon"></i>
                     </div>
                 </div>

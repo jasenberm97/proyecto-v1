@@ -39,13 +39,13 @@
                                             <button class="btn btn-primary btn-sm ri-edit-line edit" type="submit"></button>
                                         </form>
                                     </div>
-                                    <div class="col-sm-6" style="padding-left: 0%">
+                                    {{-- <div class="col-sm-6" style="padding-left: 0%">
                                         <form action="{{ route('delete_rol', $rol) }}" method="POST">
                                             @csrf             
                                             @method('delete')                               
                                             <button class="btn btn-danger btn-sm ri-delete-bin-line delete" type="submit"></button>
                                         </form>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </td>
                         </tr>                      

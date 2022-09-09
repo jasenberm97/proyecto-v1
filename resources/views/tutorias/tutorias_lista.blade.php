@@ -3,74 +3,58 @@
 @section('content')
 
 <section class="content">
+<div class="d-flex justify-content-end mt-4">
+  <div class="card-table col-sm-6 p-1">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Buscar....">
+      <button class="btn btn-primary" type="button"><span><i class="fa-solid fa-magnifying-glass"></i></span></button>
+     </div>
+  </div>
+  <div class="card-table col-sm-0.5 p-1">
+    <a class="btn btn-primary" type="button" href="/crear-tutorias"><span><i class="fa-solid fa-plus"></i></span></a>
+  </div>
+</div>
 
-    <div class="recent--patientslu">
-        <div class="title">
-            <h2 class="section--title">LISTA DE TUTORIAS</h2>
-            <a href="/crear-tutorias" class="add"><i class="ri-add-line"></i>Nuevo tutorias</a>
-            <!-- <button class="add"><a href="/crear-usuario"><i class="ri-add-line"></i></a>Nuevo usuario</button> -->
-        </div>
-        <div class="tableslu">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Carrera</th>
-                        <th>Asignatura</th>
-                        <th>Semestre</th>
-                        <th>Tutor</th>
-                        <th>Tema</th>
-                        <th>Horarios</th>
-                        <th>Estudiantes maximo</th>
-                        <th>Estudiantes existentes</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($tutorships as $tutorship)
-                        <tr>
-                            <td data-label="Carrera">{{ $tutorship->career_id }}</td>
-                            <td data-label="Asignatura">{{ $tutorship->course_id }}</td>
-                            <td data-label="Semestre">{{ $tutorship->career_id }}</td>
-                            <td data-label="Tutor">{{ $tutorship->teacher_id }}</td>
-                            <td data-label="Tems">{{ $tutorship->theme }}</td>
-                            <td data-label="Horarios">{{ $tutorship->date }}</td>
-                            <td data-label="Estudiantes maximo">{{ $tutorship->max_students }}</td>
-                            <td data-label="Estudiantes existentes">{{ $tutorship->career_id }}</td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <form action="" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-primary btn-sm ri-edit-line edit" type="submit"></button>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm-6" style="padding-left: 0%">
-                                        <form action="{{ route('delete_tutorship', $tutorship) }}" method="POST">
-                                            @csrf             
-                                            @method('delete')                               
-                                            <button class="btn btn-danger btn-sm ri-delete-bin-line delete" type="submit"></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-
-                        {{-- <td data-label="Carrera">Ingenieria en sistemas computacionales</td>
-                        <td data-label="Asignatura">Programacion web</td>
-                        <td data-label="Semestre">10</td>
-                        <td data-label="Tutor">Ing Rafael Marin</td>
-                        <td data-label="Tems">Sistema de tutorias</td>
-                        <td data-label="Horarios">20:00 22:00</td>
-                        <td data-label="Estudiantes maximo">5</td>
-                        <td data-label="Estudiantes existentes">2</td>
-                        <td><span><i class="ri-edit-line edit"></i><i class="ri-delete-bin-line delete"></i></span></td> --}}
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="table-responsive-lg tables">
+    <table class="table table-lg">
+      <thead>
+        <tr class="table-style">
+            <th>Carrera</th>
+            <th>Asignatura</th>
+            <th>Semestre</th>
+            <th>Tutor</th>
+            <th>Tema</th>
+            <th>Horarios</th>
+            <th>Estudiantes maximo</th>
+            <th>Estudiantes existentes</th>
+            <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($tutorships as $tutorship)
+        <tr>
+            <td data-label="Carrera">{{ $tutorship->career_id }}</td>
+            <td data-label="Asignatura">{{ $tutorship->course_id }}</td>
+            <td data-label="Semestre">{{ $tutorship->career_id }}</td>
+            <td data-label="Tutor">{{ $tutorship->teacher_id }}</td>
+            <td data-label="Tems">{{ $tutorship->theme }}</td>
+            <td data-label="Horarios">{{ $tutorship->date }}</td>
+            <td data-label="Estudiantes maximo">{{ $tutorship->max_students }}</td>
+            <td data-label="Estudiantes existentes">{{ $tutorship->career_id }}</td>
+          <td class="acciones">
+            <span>
+              <i class="fa-solid fa-pen-to-square edit"></i>
+            </span>
+            <span class="borrar">
+              <i class="fa-solid fa-trash-can delete"></i>
+            </span>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
 
 </section>
+
 @endsection

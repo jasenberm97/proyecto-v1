@@ -3,63 +3,85 @@
 @section('content')
 
 <section class="content">
-
-    <div class="recent--patientslu">
-        <div class="title">
-            <h2 class="section--title">LISTA DE USUARIOS</h2>
-            <a href="/crear-usuarios" class="add"><i class="ri-add-line"></i>Nuevo usuario</a>
-            <!-- <button class="add"><a href="/crear-usuario"><i class="ri-add-line"></i></a>Nuevo usuario</button> -->
+<div class="d-flex justify-content-end mt-4">
+  <div class="card-table col-sm-12 p-1">
+    <form action="" class="row g-3">
+        <div class="col-lg-3">
+            <!-- <label class="form-label" for="perfil">Perfil</label> -->
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                <select class="form-select perfil-select" name="perfil">
+                    <option selected>Selecciona perfil</option>
+                    <option value="2">Tutor</option>
+                    <option value="3">Estudiante</option>
+                </select>
+            </div>
         </div>
-        <div class="tableslu">
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 10px">#</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Cedula</th>
-                        <th>Usuario</th>
-                        <th>Correo</th>                        
-                        <th>Perfil</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($users as $key => $user)
-                    <tr>
-                        <td data-label="#">{{ $key + 1 }}</td>
-                        <td data-label="Nombres">{{ $user->name }}</td>
-                        <td data-label="Apellidos">{{ $user->last_name }}</td>
-                        <td data-label="Cedula">{{ $user->identification }}</td>
-                        <td data-label="Usuario">{{ $user->username }}</td>
-                        <td data-label="Correo">{{ $user->email }}</td>                        
-                        <td data-label="Perfil">{{ $user->rol->name }}</td>
-                        <td>
-                            {{-- <span><i class="ri-edit-line edit"></i><i class="ri-delete-bin-line delete"></i></span> --}}
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <form action="" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-primary btn-sm ri-edit-line edit" type="submit"></button>
-                                    </form>
-                                </div>
-                                <div class="col-sm-6" style="padding-left: 0%">
-                                    <form action="{{ route('delete_user', $user) }}" method="POST">
-                                        @csrf             
-                                        @method('delete')                               
-                                        <button class="btn btn-danger btn-sm ri-delete-bin-line delete" type="submit"></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="col-lg-3">
+            <!-- <label class="form-label" for="perfil">Estado</label> -->
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                <select class="form-select perfil-select" name="perfil">
+                    <option selected>Selecciona estado</option>
+                    <option value="1">Activo</option>
+                    <option value="2">Inactivo</option>
+                </select>
+            </div>
         </div>
-    </div>
+        <div class="col-lg-5">
+            <!-- <label class="form-label" for="nombre">Nombre</label> -->
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+            </div>
+        </div>
+        <div class="col-lg-1">
+          <button class="btn btn-primary btn-block" type="button"><span><i class="fa-solid fa-magnifying-glass"></i></span></button>
+        </div>
+    </form>
+  </div>  
+</div>
+<div class="card-table col-sm-0.5 p-1">
+    <a class="btn btn-primary" type="button" href="/crear-usuarios"><span><i class="fa-solid fa-plus"></i></span></a>
+</div>
+<div class="table-responsive-lg tables">
+    <table class="table table-lg">
+      <thead>
+        <tr class="table-style">
+            <th style="width: 10px">#</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Cedula</th>
+            <th>Usuario</th>
+            <th>Correo</th>                        
+            <th>Perfil</th>
+            <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($users as $key => $user)
+        <tr>
+            <td data-label="#">{{ $key + 1 }}</td>
+            <td data-label="Nombres">{{ $user->name }}</td>
+            <td data-label="Apellidos">{{ $user->last_name }}</td>
+            <td data-label="Cedula">{{ $user->identification }}</td>
+            <td data-label="Usuario">{{ $user->username }}</td>
+            <td data-label="Correo">{{ $user->email }}</td>                        
+            <td data-label="Perfil">{{ $user->rol->name }}</td>
+            <td class="acciones">
+                <span>
+                <i class="fa-solid fa-pen-to-square edit"></i>
+                </span>
+                <span class="borrar">
+                <i class="fa-solid fa-trash-can delete"></i>
+                </span>
+            </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
 
 </section>
-@endsection
 
+@endsection

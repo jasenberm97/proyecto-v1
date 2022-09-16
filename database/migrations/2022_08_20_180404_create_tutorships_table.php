@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('tutorships', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id');
             $table->foreignId('teacher_id');
+            $table->string('faculty_id');
+            $table->string('career_id');
+            $table->string('course_id');
             $table->string('theme');
             $table->string('place');
             $table->string('date');

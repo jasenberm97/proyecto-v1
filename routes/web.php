@@ -32,3 +32,40 @@ Route::get('/dashboard', function(){
 
 require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';
+
+
+
+
+
+
+
+Route::get('/home-tutorias-buscar', function () {
+    return view('tutorias.tutorias_b');
+});
+
+///home-pruebas-list
+
+
+Route::get('/home-tutorias-solicitud', function () {
+    return view('tutorias.solicitud_tutoria');
+});
+
+Route::get('/home-actividades-manuales', function () {
+    return view('actividades.actividades_m');
+});
+
+Route::get('/home-actividades-predefinidas', function () {
+    return view('actividades.actividades_d');
+});
+
+Route::get('/home-pruebas-crear', function () {
+    return view('pruebas.pruebas_c');
+});
+
+Route::get('/home-notas-evaluacion', function () {
+    return view('pruebas.notas_evaluacion');
+});
+
+Route::get('/home-perfil', function () {
+    return view('perfil.ver_perfil');
+});

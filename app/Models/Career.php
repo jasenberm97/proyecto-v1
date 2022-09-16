@@ -20,4 +20,8 @@ class Career extends Model
     {
         return $this->hasMany(Course::class);
     }
+
+    public static function courses($id){
+        return Course::where('career_id','=', $id)->get();
+    }
 }

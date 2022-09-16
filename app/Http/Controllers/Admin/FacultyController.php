@@ -8,6 +8,9 @@ use App\Models\Course;
 use App\Models\Faculty;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
+
 class FacultyController extends Controller
 {
     public function create(){    
@@ -22,7 +25,7 @@ class FacultyController extends Controller
 
     public function store(Request $request){
         $data = $request->validate([
-            'name' => ['required', 'string', 'unique:faculties'],            
+            'name' => ['required', 'string'],            
         ]);
 
         $faculty = Faculty::create($data);
@@ -41,15 +44,18 @@ class FacultyController extends Controller
     }
 
     public function delete(Course $faculty){        
-        $career = Career::where('id', $faculty->career_id)->get();
+        $career = Career::where('id', $faculty->career_id)->get()->first();
         
-        Course::where('id', $faculty->id)->delete();
+        Course::where('id', $faculty->id)->delete(); 
         
-        foreach ($career as $value) {            
-            Career::where('id', $value->id)->delete();
-            Faculty::where('id', $value->faculty_id)->delete();
+        if (Course::where('career_id', $faculty->career_id)->get()->isEmpty()) {
+            Career::where('id', $faculty->career_id)->delete();
         }
-
+        
+        if (Career::where('id', $faculty->career_id)->get()->isEmpty()) {                 
+            Faculty::where('id', $career->faculty_id)->delete();
+        }
+        
         return redirect()->route('list_faculties');
     }
 }

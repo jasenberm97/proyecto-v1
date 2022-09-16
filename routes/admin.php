@@ -34,11 +34,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //-------------------    
     
-    Route::get('/crear-tutorias', function () {
-        return view('tutorias.tutorias_crear');
-    });
-    
-    Route::get('/listar-tutorias', function () {
-        return view('tutorias.tutorias_lista');
-    });
+
 });

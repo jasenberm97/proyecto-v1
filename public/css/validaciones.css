@@ -1,0 +1,54 @@
+.form-box .error-text {
+    color: #ca3434;
+    visibility: hidden;
+  } 
+
+  .form-box.form-error input {
+    border-bottom: 2px solid red;
+  }
+
+  .form-box.form-error .error-text {
+    visibility: visible;
+  }
+  
+  .form-box.form-success input {
+    border-bottom: 2px solid green
+  }
+
+
+    /*************************************PERFIL***************************************************/
+    .form-boxR .error-text {
+      color: #ca3434;
+      visibility: hidden;
+    } 
+  
+    .form-boxR.form-error input {
+      border-bottom: 2px solid red;
+    }
+  
+    .form-boxR.form-error .error-text {
+      visibility: visible;
+    }
+    
+    .form-boxR.form-success input {
+      border-bottom: 2px solid green
+    }
+
+  /*************************************ASIGNATURA***************************************************/
+  .form-boxA .error-text {
+    color: #ca3434;
+    visibility: hidden;
+  } 
+
+  .form-boxA.form-error input {
+    border-bottom: 2px solid red;
+  }
+
+  .form-boxA.form-error .error-text {
+    visibility: visible;
+  }
+
+  .form-boxA.form-success input {
+    border-bottom: 2px solid green
+  }
+
